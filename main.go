@@ -13,6 +13,7 @@ func main() {
 
 	models.GetUserList()
 
+	//
 	r := router.Router()
 	err := r.Run(":9090")
 	if err != nil {
