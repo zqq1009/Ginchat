@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e26908d-1ccb-442b-b6e4-305dc67a2448" name="更改" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/test/redis_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ginchat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ginchat.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/UserBasic.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserBasic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/message.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/userservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/userservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/system_init.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/system_init.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,11 +28,20 @@
   <component name="GOROOT" url="file://$PROJECT_DIR$/../../go" />
   <component name="Git.Settings">
     <branch-grouping />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2QCGSji4XCoMi55leAKA8iLOX2D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,11 +55,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/GOProject/gin-demo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/GOProject/gin-vue-admin&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -58,34 +74,36 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\GOProject\ginchat\test" />
       <recent name="G:\GOProject\ginchat\views" />
       <recent name="G:\GOProject\ginchat\views\user" />
       <recent name="G:\GOProject\ginchat" />
       <recent name="G:\GOProject\ginchat\view\user" />
-      <recent name="G:\GOProject\ginchat\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\GOProject\ginchat\views" />
       <recent name="G:\GOProject\ginchat\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build main.go">
-    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go 构建.go build ginchat">
+    <configuration name="go build ginchat" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ginchat" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
+      <kind value="PACKAGE" />
       <package value="ginchat" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build testGorm.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="redis_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="ginchat" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <package value="ginchat" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/test/testGorm.go" />
+      <filePath value="$PROJECT_DIR$/test/redis_test.go" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="createcom.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ginchat/views/chat/createcom.html" useBuiltInWebServerPort="true">
@@ -99,11 +117,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build main.go" />
-        <item itemvalue="JavaScript 调试.createcom.html" />
-        <item itemvalue="Go 构建.go build testGorm.go" />
+        <item itemvalue="Go 构建.go build ginchat" />
+        <item itemvalue="Go 测试.redis_test.go" />
         <item itemvalue="JavaScript 调试.main.html" />
         <item itemvalue="JavaScript 调试.login.html" />
+        <item itemvalue="JavaScript 调试.createcom.html" />
       </list>
     </recent_temporary>
   </component>
@@ -130,5 +148,16 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/models/message.go</url>
+          <line>166</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

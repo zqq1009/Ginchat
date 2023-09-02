@@ -242,10 +242,10 @@ func SendMsg(c *gin.Context) {
 			return
 		}
 	}(ws)
-	MsgHandler(ws, c)
+	MsgHandler(c, ws)
 }
 
-func MsgHandler(ws *websocket.Conn, c *gin.Context) {
+func MsgHandler(c *gin.Context, ws *websocket.Conn) {
 	for {
 		msg, err := utils.Subscribe(c, utils.PublishKey)
 		if err != nil {
