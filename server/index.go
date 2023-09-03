@@ -1,16 +1,18 @@
-package service
+package server
 
 import (
 	"ginchat/models"
+	"ginchat/utils"
 	"github.com/gin-gonic/gin"
 	"strconv"
 	"text/template"
 )
 
 // GetIndex
-// @Tags 首页
+// @Summary 首页
+// @Tags 登录模块
 // @Success 200 {string} welcome
-// @Router /index [get]
+// @Router / [get]
 func GetIndex(c *gin.Context) {
 	ind, err := template.ParseFiles("views/user/login.html", "views/chat/head.html")
 	if err != nil {
@@ -24,6 +26,11 @@ func GetIndex(c *gin.Context) {
 	//})
 }
 
+// ToRegister
+// @Summary 注册界面
+// @Tags 登录模块
+// @Success 200 {string} welcome
+// @Router /toRegister [get]
 func ToRegister(c *gin.Context) {
 	ind, err := template.ParseFiles("views/user/register.html")
 	if err != nil {
@@ -37,6 +44,11 @@ func ToRegister(c *gin.Context) {
 	//})
 }
 
+// ToChat
+// @Summary 个人界面
+// @Tags 登录模块
+// @Success 200 {string} welcome
+// @Router /toChat [get]
 func ToChat(c *gin.Context) {
 	ind, err := template.ParseFiles(
 		"views/chat/index.html",
@@ -66,5 +78,5 @@ func ToChat(c *gin.Context) {
 }
 
 func Chat(c *gin.Context) {
-	models.Chat(c.Writer, c.Request)
+	utils.Chat(c.Writer, c.Request)
 }

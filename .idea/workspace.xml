@@ -4,14 +4,31 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e26908d-1ccb-442b-b6e4-305dc67a2448" name="更改" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/test/redis_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ginchat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ginchat.iml" afterDir="false" />
+    <list default="true" id="5e26908d-1ccb-442b-b6e4-305dc67a2448" name="更改" comment="实现了聊天功能">
+      <change afterPath="$PROJECT_DIR$/utils/community.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/contact.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/UserBasic.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserBasic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/community.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/community.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/contact.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/group_basic.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/groupBasic.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/userservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/userservice.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/system_init.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/system_init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/attach.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/attach.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/userservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/userservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testGorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/testGorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/chat/foot.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/chat/foot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/chat/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/chat/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/chat/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/chat/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user/test.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +54,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -95,6 +115,15 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build ginchat/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ginchat" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="ginchat/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/testGorm.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="redis_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="ginchat" />
       <working_directory value="$PROJECT_DIR$/test" />
@@ -106,9 +135,6 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="createcom.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ginchat/views/chat/createcom.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
     <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ginchat/views/user/login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -118,10 +144,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go 构建.go build ginchat" />
+        <item itemvalue="Go 构建.go build ginchat/test" />
         <item itemvalue="Go 测试.redis_test.go" />
         <item itemvalue="JavaScript 调试.main.html" />
         <item itemvalue="JavaScript 调试.login.html" />
-        <item itemvalue="JavaScript 调试.createcom.html" />
       </list>
     </recent_temporary>
   </component>
@@ -143,21 +169,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="版本1" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="实现了聊天功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现了聊天功能" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/models/message.go</url>
-          <line>166</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

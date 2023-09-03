@@ -16,7 +16,7 @@ func main() {
 	}
 
 	//db.AutoMigrate(&models.UserBasic{})
-	db.AutoMigrate(&models.Community{})
+	db.AutoMigrate(&models.Contact{})
 	//db.AutoMigrate(&models.Message{})
 	//db.AutoMigrate(&models.GroupBasic{})
 

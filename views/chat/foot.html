@@ -375,6 +375,7 @@
                             this.msgcontext.Type = 2;
                         }
                     },
+
                     loaduserinfo:function(userid,cb){
                         userid = ""+ userid;
                         var userinfo = this.usermap[userid];
@@ -387,6 +388,7 @@
                             cb(userinfo)
                         }
                     },
+
                     onmessage:function(data){
                         this.loaduserinfo(data.userId, function (user) {
 
@@ -409,6 +411,7 @@
                         }.bind(this))
 
                     },
+
                     initwebsocket:function(){
                         var url="ws://"+location.host+"/chat?userId="+userId()+"&token=" +util.parseQuery("token");
                         this.webSocket=new WebSocket(url);
@@ -437,6 +440,7 @@
                     sendmsg:function(){
 
                     },
+
                     loadfriends:function(){
                         var that = this;
                         post("searchFriends",{userId:userId()},function(res){
@@ -449,12 +453,14 @@
                             this.usermap = usermap;
                         }.bind(this))
                     },
+
                     loadcommunitys:function(){
                         var that = this;
                         post("contact/loadcommunity",{ownerId:userId()},function(res){
                             that.communitys = res.Rows ||[];
                         })
                     },
+
                     addfriend:function(){
                         var that = this;
                         //prompt
@@ -472,9 +478,10 @@
                         },'div');
                         document.querySelector('.mui-popup-input input').type = 'number';
                     },
-                    _addfriend:function(dstobj){
+
+                    _addfriend:function(targetId){
                         var that = this
-                        post("contact/addfriend",{targetId:dstobj,userId: userId()},function(res){
+                        post("contact/addfriend",{targetId:targetId,userId: userId()},function(res){
                             if(res.Code==0){
                                 mui.toast("添加成功");
                                 that.loadfriends();

@@ -1,4 +1,4 @@
-package service
+package server
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ import (
 // @Router /user/getUserList [get]
 func GetUserList(c *gin.Context) {
 	data := make([]*models.UserBasic, 10)
-	data = models.GetUserList()
+	data = utils.GetUserList()
 	c.JSON(http.StatusOK, gin.H{
 		"code": 0, //0成功	-1失败
 		"data": data,
@@ -48,7 +48,7 @@ func CreateUser(c *gin.Context) {
 
 	salt := fmt.Sprintf("%06d", rand.Int31())
 
-	data := models.FindUserByName(user.Name)
+	data := utils.FindUserByName(user.Name)
 	if data.Name != "" {
 		c.JSON(-1, gin.H{
 			"code":    -1, //0成功	-1失败
@@ -75,7 +75,7 @@ func CreateUser(c *gin.Context) {
 	//加密
 	user.PassWord = utils.MakePassword(password, salt)
 	user.Salt = salt
-	models.CreatUser(user)
+	utils.CreatUser(user)
 
 	c.JSON(http.StatusOK, gin.H{
 		"code":    0, //0成功	-1失败
@@ -103,7 +103,7 @@ func FindUserByNameAndPwd(c *gin.Context) {
 	fmt.Println(name, password)
 	fmt.Println("....")
 	//先判断用户存不存在
-	user := models.FindUserByName(name)
+	user := utils.FindUserByName(name)
 	if user.Name == "" {
 		c.JSON(http.StatusOK, gin.H{
 			"code":    -1, //0成功	-1失败
@@ -123,7 +123,7 @@ func FindUserByNameAndPwd(c *gin.Context) {
 		return
 	}
 	pwd := utils.MakePassword(password, user.Salt)
-	data = models.FindUserByNameAndPwd(name, pwd)
+	data = utils.FindUserByNameAndPwd(name, pwd)
 
 	c.JSON(http.StatusOK, gin.H{
 		"code":    0, //0成功	-1失败
@@ -142,7 +142,7 @@ func DeleteUser(c *gin.Context) {
 	user := models.UserBasic{}
 	id, _ := strconv.Atoi(c.Query("id"))
 	user.ID = uint(id)
-	models.DeleteUser(user)
+	utils.DeleteUser(user)
 	c.JSON(http.StatusOK, gin.H{
 		"code":    0, //0成功	-1失败
 		"message": "删除用户成功",
@@ -178,7 +178,7 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	data := models.FindUserByName(user.Name)
+	data := utils.FindUserByName(user.Name)
 	if data.Name != "" {
 		c.JSON(-1, gin.H{
 			"code":    -1, //0成功	-1失败
@@ -187,7 +187,7 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	phone := models.FindUserByPhone(user.Phone)
+	phone := utils.FindUserByPhone(user.Phone)
 	if phone.Phone != "" {
 		c.JSON(-1, gin.H{
 			"code":    -1, //0成功	-1失败
@@ -196,7 +196,7 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	email := models.FindUserByEmail(user.Email)
+	email := utils.FindUserByEmail(user.Email)
 	if email.Email != "" {
 		c.JSON(-1, gin.H{
 			"code":    -1, //0成功	-1失败
@@ -215,7 +215,7 @@ func UpdateUser(c *gin.Context) {
 
 	salt := fmt.Sprintf("%06d", rand.Int31())
 	user.PassWord = utils.MakePassword(user.PassWord, salt)
-	models.UpdateUser(user)
+	utils.UpdateUser(user)
 	c.JSON(http.StatusOK, gin.H{
 		"code":    0, //0成功	-1失败
 		"message": "修改用户成功",
@@ -262,12 +262,18 @@ func MsgHandler(c *gin.Context, ws *websocket.Conn) {
 }
 
 func SendUserMsg(c *gin.Context) {
-	models.Chat(c.Writer, c.Request)
+	utils.Chat(c.Writer, c.Request)
 }
 
+// SearchFriends
+// @Summary 查找好友
+// @Tags 用户模块
+// @param id query string false "id"
+// @Success 200 {string} json{"code","message"}
+// @Router /searchFriends [post]
 func SearchFriends(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Request.FormValue("userId"))
-	users := models.SearchFriend(uint(id))
+	users := utils.SearchFriend(uint(id))
 	//c.JSON(200, gin.H{
 	//	"code":    0,
 	//	"message": "success",
@@ -277,10 +283,17 @@ func SearchFriends(c *gin.Context) {
 	utils.RespOKList(c.Writer, users, len(users))
 }
 
+// AddFriend
+// @Summary 添加好友
+// @Tags 用户模块
+// @param userId query string false "userId"
+// @param targetId query string false "targetId"
+// @Success 200 {string} json{"code","message"}
+// @Router /contact/addfriend [post]
 func AddFriend(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Request.FormValue("userId"))
 	targetId, _ := strconv.Atoi(c.Request.FormValue("targetId"))
-	code, msg := models.AddFriend(uint(userId), uint(targetId))
+	code, msg := utils.AddFriend(uint(userId), uint(targetId))
 	// c.JSON(200, gin.H{
 	// "code": 0, // 0成功 -1失败
 	// "message": "查询好友列表成功！",
@@ -293,19 +306,21 @@ func AddFriend(c *gin.Context) {
 	}
 }
 
+// CreateCommunity
+// @Summary 创建群聊
+// @Tags 用户模块
+// @param ownerId query string false "ownerId"
+// @param name query string false "name"
+// @Success 200 {string} json{"code","message"}
+// @Router /contact/createCommunity [post]
 func CreateCommunity(c *gin.Context) {
 	ownerId, _ := strconv.Atoi(c.Request.FormValue("ownerId"))
 	name := c.Request.FormValue("name")
 	community := models.Community{}
 	community.OwnerId = uint(ownerId)
 	community.Name = name
-	code, msg := models.CreateCommunity(community)
+	code, msg := utils.CreateCommunity(community)
 
-	// c.JSON(200, gin.H{
-	// "code": 0, // 0成功 -1失败
-	// "message": "查询好友列表成功！",
-	// "data": users,
-	// })
 	if code == 0 {
 		utils.RespOK(c.Writer, code, msg)
 	} else {
@@ -313,16 +328,33 @@ func CreateCommunity(c *gin.Context) {
 	}
 }
 
-// 加载群列表
+// LoadCommunity
+// @Summary 加载群聊
+// @Tags 用户模块
+// @param ownerId query string false "ownerId"
+// @Success 200 {string} json{"code","message"}
+// @Router /contact/loadCommunity [post]
 func LoadCommunity(c *gin.Context) {
 	ownerId, _ := strconv.Atoi(c.Request.FormValue("ownerId"))
 
-	data, msg := models.LoadCommunity(uint(ownerId))
+	data, msg := utils.LoadCommunity(uint(ownerId))
 	if len(data) != 0 {
 		utils.RespList(c.Writer, 0, data, msg)
 	} else {
 		utils.RespFail(c.Writer, msg)
 	}
+}
+
+// FindByID
+// @Summary 通过ID查找
+// @Tags 用户模块
+// @Success 200 {string} json{"code","message"}
+// @Router user/find [post]
+func FindByID(c *gin.Context) {
+	userId, _ := strconv.Atoi(c.Request.FormValue("userId"))
+	// name := c.Request.FormValue("name")
+	data := utils.FindUserByID(uint(userId))
+	utils.RespOK(c.Writer, data, "ok")
 }
 
 //func JoinGroup(c *gin.Context) {

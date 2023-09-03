@@ -1,15 +1,113 @@
 info:
   contact: {}
 paths:
-  /index:
+  /:
     get:
       responses:
         "200":
           description: OK
           schema:
             type: string
+      summary: 首页
       tags:
-      - 首页
+      - 登录模块
+  /attach/upload:
+    post:
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      tags:
+      - 上传图片
+  /contact/addfriend:
+    post:
+      parameters:
+      - description: userId
+        in: formData
+        name: userId
+        type: string
+      - description: targetId
+        in: formData
+        name: targetId
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 添加好友
+      tags:
+      - 个人中心
+  /contact/createCommunity:
+    post:
+      parameters:
+      - description: ownerId
+        in: query
+        name: ownerId
+        type: string
+      - description: name
+        in: query
+        name: name
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 创建群聊
+      tags:
+      - 用户模块
+  /contact/loadCommunity:
+    post:
+      parameters:
+      - description: ownerId
+        in: query
+        name: ownerId
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 加载群聊
+      tags:
+      - 用户模块
+  /searchFriends:
+    post:
+      parameters:
+      - description: id
+        in: query
+        name: id
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 查找好友
+      tags:
+      - 用户模块
+  /toChat:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 个人界面
+      tags:
+      - 登录模块
+  /toRegister:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 注册界面
+      tags:
+      - 登录模块
   /user/creatUser:
     get:
       parameters:
@@ -49,7 +147,7 @@ paths:
       tags:
       - 用户模块
   /user/findUserByNameAndPwd:
-    get:
+    post:
       parameters:
       - description: 用户名
         in: query

@@ -1,4 +1,4 @@
-package service
+package server
 
 import (
 	"fmt"
@@ -11,6 +11,10 @@ import (
 	"time"
 )
 
+// Upload
+// @Tags 上传图片
+// @Success 200 {string} welcome
+// @Router /attach/upload [post]
 func Upload(c *gin.Context) {
 	w := c.Writer
 	req := c.Request
